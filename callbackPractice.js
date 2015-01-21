@@ -26,11 +26,15 @@ and what you should write is the favNum function that makes the code above work,
 
   //Code Here for first
   
+var first = function(arr, cb){
+ var name = arr[0];
+ return cb(name);
+
+}
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
   console.log('The first name in names is ', firstName)
 });
-
 
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
@@ -39,6 +43,11 @@ first(names, function(firstName){
 
 
   //Code Here for last
+var last = function(arr, cb){
+  var name = arr[arr.length - 1];
+  return cb(name)
+}
+
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
@@ -57,6 +66,12 @@ last(names, function(lastName){
 
 
   //Code Here for multiply
+var multiply = function(x, y, cb){
+  var ans = x * y;
+  return cb(ans);
+}
+
+
 
 multiply(4, 3, function(answer){
   console.log('The answer is ', answer); //should console.log 12
@@ -73,6 +88,17 @@ multiply(4, 3, function(answer){
 
 
   //Code Here for contains
+
+var contains = function(arr, str, cb){
+  arr.indexOf(str);
+  if( arr.indexOf(str) === -1){
+    return cb(false)}
+  else{
+    return cb(true)
+ 
+    } 
+  }
+
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains(names, 'Colt', function(result){
@@ -93,7 +119,15 @@ contains(names, 'Colt', function(result){
 
 
     //Code Here for uniq
-
+var uniq = function(arr, cb){
+ var newArr = [];
+  for(var i = 0; i < arr.length; i++){
+    if (newArr.indexOf(arr[i]) === -1) {
+      newArr.push(arr[i])
+    }
+  }
+  return cb(newArr)
+}
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -109,6 +143,11 @@ uniq(names, function(uniqArr){
 
 
     //Code Here for each
+var each = function(arr, cb){
+  for(var i = 0; i < arr.length; i++){
+   cb(arr[i], [i]);
+  }
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
@@ -148,6 +187,14 @@ var users = [
   },
 ];
 
+
+var getUserById = function(arr, str, cb){
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i].id === str){
+    cb(arr[i])
+    }
+  }
+}
 getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
